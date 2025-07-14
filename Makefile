@@ -2,7 +2,7 @@
 # Author: Andy McCall
 
 # Project configuration
-PROJECT_NAME := pac-man
+PROJECT_NAME := pac-man-x16
 DOCKER_IMAGE := $(PROJECT_NAME)
 DOCKER_TAG := latest
 DOCKER_REGISTRY := # Set this if you want to push to a registry
