@@ -1,12 +1,11 @@
 # Pac-Man X16
 
+A Pac-Man clone for the Commander X16 retro computer, written in 6502 assembly using the cc65 toolchain.
+
 ## 🚦 Build Status
 
-Main [![main](https://github.com/andymccall/pac-man-x16/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/andymccall/pac-man-x16/actions/workflows/ci.yml)
-
-Develop [![develop](https://github.com/andymccall/pac-man-x16/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/andymccall/pac-man-x16/actions/workflows/ci.yml)
-
-A Pac-Man clone for the Commander X16 retro computer, written in 6502 assembly using the cc65 toolchain.
+[![main branch build status](https://img.shields.io/github/actions/workflow/status/andymccall/pac-man-x16/ci.yml?branch=main&label=main)](https://github.com/andymccall/pac-man-x16/actions/workflows/ci.yml)
+[![develop branch build status](https://img.shields.io/github/actions/workflow/status/andymccall/pac-man-x16/ci.yml?branch=develop&label=develop)](https://github.com/andymccall/pac-man-x16/actions/workflows/ci.yml)
 
 ## 🎮 About
 
