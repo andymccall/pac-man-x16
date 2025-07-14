@@ -24,16 +24,20 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./docker/Dockerfile
           load: true
-          push: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') }}
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/pac-man-x16:latest
-            pac-man-x16:latest
+          push: false
+          tags: pac-man-x16:latest
 
       - name: Build project in Docker
         run: make build-in-docker
+
+      - name: Push Docker image to Docker Hub
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+        run: |
+          docker tag pac-man-x16:latest ${{ secrets.DOCKERHUB_USERNAME }}/pac-man-x16:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/pac-man-x16:latest
