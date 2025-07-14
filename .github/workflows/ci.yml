@@ -17,12 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: make docker-build
-
-      - name: Build project in Docker
-        run: make build-in-docker
-
       - name: Log in to Docker Hub
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
         uses: docker/login-action@v3
@@ -30,10 +24,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Tag and push image to Docker Hub
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        run: |
-          docker tag pac-man-x16-build:latest $DOCKERHUB_USERNAME/pac-man-x16-build:latest
-          docker push $DOCKERHUB_USERNAME/pac-man-x16-build:latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./docker/Dockerfile
+          push: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pac-man-x16:latest
+
+      - name: Build project in Docker
+        run: make build-in-docker
