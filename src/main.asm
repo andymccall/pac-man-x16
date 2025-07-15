@@ -72,6 +72,9 @@ start:
     sta player1_credits
     sta player2_credits
 
+    ; Initialize active_player to default value (Player 1).
+    lda #$01
+    sta active_player
 ; -----------------------------------------------------------------------------
 ; Main Application Loop
 ; -----------------------------------------------------------------------------
