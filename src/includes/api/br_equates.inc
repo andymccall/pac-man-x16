@@ -10,6 +10,7 @@ SCREEN_MODE                     = $FF5F
 MOUSE_CONFIG                    = $FF68
 MOUSE_GET                       = $FF6B
 GETIN                           = $FFE4
+GETIN_NB                        = $FFD6
 
 ;-------------------------------------------------------------------
 ; Graphics

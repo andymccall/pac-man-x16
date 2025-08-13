@@ -18,6 +18,7 @@ OUTPUT_PRG := $(BIN_DIR)/$(shell echo '$(PROJECT_NAME)' | tr 'a-z' 'A-Z').PRG
 # Build tools and flags
 CL65 := cl65
 CL65_FLAGS := -t cx16
+X16EMU := x16emu
 
 # Version info
 GIT_INFO := $(shell git describe --always --tags 2>/dev/null || echo "unknown")
@@ -33,9 +34,13 @@ CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
 CURRENT_USER := $(shell whoami)
 
-.PHONY: all build clean docker-build docker-push build-in-docker help
+.PHONY: all build clean docker-build docker-push build-in-docker help run
 
 all: build
+
+run: build
+	@echo "Launching emulator..."
+	$(X16EMU) -prg $(OUTPUT_PRG)
 
 help:
 	@echo "Usage: make [target]"
@@ -43,6 +48,7 @@ help:
 	@echo "Targets:"
 	@echo "  all                Build the project (default)"
 	@echo "  build              Build the project locally"
+	@echo "  run                Build and run the project in the emulator"
 	@echo "  clean              Clean build artifacts"
 	@echo "  docker-build       Build the Docker image"
 	@echo "  docker-push        Push the Docker image to a registry"

@@ -40,6 +40,7 @@
    .include "includes/app/credits.inc"
    .include "includes/app/scoring.inc"
    .include "includes/app/player.inc"
+   .include "includes/app/ui.inc"
 
 ; -----------------------------------------------------------------------------
 ; Main Program Logic
@@ -84,11 +85,6 @@ app_loop:
 
     jsr select_player  ; Call the player selection routine.
 
-getinput:
-    jsr GETIN          ; Wait for and get a character from the keyboard buffer.
-menu_quit:
-    cmp #'Q'           ; Compare the input character with 'Q'.
-    beq quit           ; If it's 'Q', branch to the quit routine.
 done:
     jmp app_loop       ; If not 'Q', loop back to wait for more input.
 
