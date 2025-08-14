@@ -35,3 +35,36 @@ use_player1_credit:
 no_credits_p1:
     clc                     ; Clear carry to indicate failure (no credits)
     rts
+<<<<<<< HEAD
+
+; -----------------------------------------------------------------------------
+; add_player2_credit
+; Description: Increments the credit count for Player 2.
+; Input:       None
+; Output:      None
+; Modifies:    A, player2_credits
+; -----------------------------------------------------------------------------
+add_player2_credit:
+    inc player2_credits     ; Increment the credit count for player 2
+    rts                     ; Return from subroutine
+
+; -----------------------------------------------------------------------------
+; use_player2_credit
+; Description: Decrements the credit count for Player 2 if credits are available.
+; Input:       None
+; Output:      Carry flag set if a credit was used, clear if no credits were available.
+; Modifies:    A, player2_credits
+; -----------------------------------------------------------------------------
+use_player2_credit:
+    lda player2_credits     ; Load player 2's credits into the accumulator
+    beq no_credits_p2       ; If zero, branch to no_credits
+
+    dec player2_credits     ; Decrement the credit count
+    sec                     ; Set carry to indicate success
+    rts
+
+no_credits_p2:
+    clc                     ; Clear carry to indicate failure (no credits)
+    rts
+=======
+>>>>>>> main

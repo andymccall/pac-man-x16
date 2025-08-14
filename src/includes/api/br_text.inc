@@ -19,6 +19,7 @@ SETTXT                     = $FFD3 ; Set text cursor position (A=X, Y=Y)
 ;-------------------------------------------------------------------
 
         .macro  br_text_print str
+          .scope
             pha
             lda #<str
             sta ASCII_ZERO
@@ -37,6 +38,7 @@ SETTXT                     = $FFD3 ; Set text cursor position (A=X, Y=Y)
             lda #ASCII_CR
             jsr CHROUT
             pla
+          .endscope
         .endmacro
 
 ;-------------------------------------------------------------------
@@ -55,6 +57,7 @@ SETTXT                     = $FFD3 ; Set text cursor position (A=X, Y=Y)
 ; Destroys: lda, ldy
 ;-------------------------------------------------------------------
         .macro  br_text_print_at str, x_pos, y_pos
+          .scope
             pha             ; Save A register
             phy             ; Save Y register
 
@@ -84,4 +87,5 @@ SETTXT                     = $FFD3 ; Set text cursor position (A=X, Y=Y)
             
             ply             ; Restore Y register
             pla             ; Restore A register
+          .endscope
         .endmacro
