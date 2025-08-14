@@ -35,6 +35,7 @@ use_player1_credit:
 no_credits_p1:
     clc                     ; Clear carry to indicate failure (no credits)
     rts
+<<<<<<< HEAD
 
 ; -----------------------------------------------------------------------------
 ; add_player2_credit
@@ -65,3 +66,5 @@ use_player2_credit:
 no_credits_p2:
     clc                     ; Clear carry to indicate failure (no credits)
     rts
+=======
+>>>>>>> main

@@ -15,6 +15,7 @@
 ; Modifies:    -
 ; -----------------------------------------------------------------------------
 select_player:
+<<<<<<< HEAD
     jsr GETIN_NB            ; Non-blocking call to get a character from the keyboard buffer.
     beq no_key_pressed      ; If no key was pressed (A=0), branch to the end.
 
@@ -47,3 +48,7 @@ add_p2_credit:
 start_game:
     ; TODO: Implement game start logic.
     rts
+=======
+    ; TODO: Implement player selection logic.
+    rts                     ; Return from subroutine
+>>>>>>> main
